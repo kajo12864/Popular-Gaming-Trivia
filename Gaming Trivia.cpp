@@ -19,6 +19,7 @@
  * for answers.
  * https://stackoverflow.com/questions/6926433/how-to-shuffle-a-stdvector --Read for assistance in shuffling a
  * vector's contents.
+ * https://stackoverflow.com/questions/33284483/how-to-use-cin-fail-in-c-properly --Read to learn how to use cin.fail()
 */
 
 #include <iostream>
@@ -60,18 +61,20 @@ int main() {
     /*Program title*/
     std::cout << "== GAMING TRIVIA ==" << std::endl;
     /*Program description*/
-    std::cout << "  Each quiz has 10 questions. Try to get at least 7 correct to pass!\n" << std::endl;
+    std::cout << "There are four quizzes of different games and a quiz ''mash-up'' if you would like to be quizzed on"
+                 " all four games. Try to get at least half of the quiz correct to pass!\n"
+    << std::endl;
     /* INITIALIZATION --------------------------------------------------------------------------------------*/
     /*Setting up the random seed so questions are in a different order every run*/
     auto rd = std::random_device {}; /*Sets up the random seed*/
     auto srand = std::default_random_engine { rd() };
     /*A variable that the controls main while loop so users can choose to take another quiz after finishing a quiz*/
     bool continue_val = true;
-    /*User response to whether the main loop should terminate or continue*/
-    char given_answer = 'O';
-    /*User input for which quiz they wish to take.*/
-    char continue_prompt;
     /*Variable that holds the response given by the user to a trivia question*/
+    char given_answer = 'O';
+    /*User response to whether the main loop should terminate or continue*/
+    char continue_prompt;
+    /*User input for which quiz they wish to take.*/
     int quiz_choice = 0;
 
     /* QUESTIONS LIST --------------------------------------------------------------------------------------*/
@@ -172,13 +175,14 @@ int main() {
     minecraft_q1.answer = 'B';
     question minecraft_q2;
     minecraft_q2.prompt = "How do you make a Potion of Poison in Minecraft?\n";
-    minecraft_q2.choices = " A. 1. Create an Awkward Potion using 1 Netherwart.\n 2. Combine the Awkward Potion with a "
-                           "Spider Eye to create the Potion of Poison."
-                           "\n B. 1. Create a Mundane Potion using 1 Netherwart.\n 2. Combine the Mundane Potion "
+    minecraft_q2.choices = " A. 1. Create an Awkward Potion using 1 Netherwart.\n  2. Combine the Awkward Potion with"
+                           " a Spider Eye to create the Potion of Poison."
+                           "\n B. 1. Create a Mundane Potion using 1 Dirt.\n  2. Combine the Mundane Potion "
                            "with a Fermented Spider Eye to create the Potion of Poison."
-                           "\n C. 1. Create a Mundane Potion using 1 Netherwart.\n 2. Combine the Mundane Potion "
+                           "\n C. 1. Create a Mundane Potion using 1 Netherwart.\n  2. Combine the Mundane Potion "
                            "with a Fermented Spider Eye to create the Potion of Poison. \n D. "
-                           "124";
+                           "1. Create a Mundane Potion using 1 Spider Eye.\n  2. Combine the Mundane Potion "
+                           "with a Nether Wart to create the Potion of Poison.";
     minecraft_q2.answer = 'C';
     question minecraft_q3;
     minecraft_q3.prompt = "What items are needed to craft Minecraft's Enchanting Table?\n";
